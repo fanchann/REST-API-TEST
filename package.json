@@ -1,0 +1,23 @@
+{
+  "name": "rest-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fanchann/REST-API-TEST.git"
+  },
+  "author": "Fanny Arif Nasrudin",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/fanchann/REST-API-TEST/issues"
+  },
+  "homepage": "https://github.com/fanchann/REST-API-TEST#readme",
+  "dependencies": {
+    "body-parser": "^1.20.0",
+    "mysql": "^2.18.1"
+  }
+}
