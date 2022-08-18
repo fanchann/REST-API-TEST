@@ -6,6 +6,7 @@ module.exports = (app) => {
 
     app.route('/')
         .get(message.index)
+        .post(message.tambahData)
 
     app.route('/views')
         .get(message.tampilData)

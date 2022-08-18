@@ -32,8 +32,32 @@ const tampilDataById = (req, res) => {
 }
 
 
+const tambahData = async (req, res) => {
+    try {
+
+        var nim = req.body.nim;
+        var nama = req.body.nama;
+        var jurusan = req.body.jurusan;
+
+        connection.query(await `INSERT INTO mahasiswa (nim,nama,jurusan) VALUES(?,?,?)`, [nim, nama, jurusan],
+            (err, views, fields) => {
+                if (err) {
+                    response.ok('Eror blok', res)
+                } else {
+                    response.ok("Berhasil menambahkan data", res)
+                }
+            }
+        )
+    } catch (err) {
+        console.log(err)
+    }
+
+}
+
+
 module.exports = {
     index,
     tampilData,
-    tampilDataById
+    tampilDataById,
+    tambahData
 }
