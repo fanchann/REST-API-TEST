@@ -1,16 +1,16 @@
-const connection = require('../connect');
-const mysql = require('mysql');
-const md5 = require('md5');
-const response = require('../res.js');
-const jwt = require('jsonwebtoken');
-const config = require('../config/secret');
-const ip = require('ip');
+var connection = require('../connect');
+var mysql = require('mysql');
+var md5 = require('md5');
+var response = require('../res');
+var jwt = require('jsonwebtoken');
+var config = require('../config/secret');
+var ip = require('ip');
 
 
 //controller for register
 
 const registrasi = (req, res) => {
-    const post = {
+    var post = {
         username: req.body.username,
         email: req.body.email,
         password: md5(req.body.password),
@@ -18,21 +18,21 @@ const registrasi = (req, res) => {
         tanggal_daftar: new Date()
     }
 
-    var checkEmail = `SELECT email FROM ?? WHERE ??`;
-    const checkData = ["user", "email", post.email];
+    var query = "SELECT email FROM ?? WHERE ??";
+    var table = ["user", "email", post.email];
 
-    checkEmail = mysql.format(checkEmail, checkData);
+    query = mysql.format(query, table);
 
 
-    connection.query(checkEmail, (err, rows) => {
+    connection.query(query, (err, rows) => {
         if (err) {
             console.log(err)
         } else {
             if (rows.length == 0) {
                 var query = `INSERT INTO ?? SET ?`;
-                var post = ["user"];
+                var table = ["user"];
 
-                query = mysql.format(query, post);
+                query = mysql.format(query, table);
                 connection.query(query, post, (err, rows) => {
                     if (err) {
                         console.log(err)
@@ -41,9 +41,13 @@ const registrasi = (req, res) => {
                     }
                 });
             } else {
-                response.ok("Email sudah terdaftar!")
+                response.ok("Email sudah terdaftar!", res)
             }
         }
     })
 
+}
+
+module.exports = {
+    registrasi
 }
