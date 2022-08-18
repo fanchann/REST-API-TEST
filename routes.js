@@ -17,6 +17,6 @@ module.exports = (app) => {
     app.route('/edit')
         .put(message.editMhsById)
 
-    app.route('/hapus')
+    app.route('/hapus/:id_mahasiswa')
         .delete(message.hapusMahasiswa)
 }
