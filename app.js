@@ -11,6 +11,7 @@ const port = 3001
 bodyParser.urlencoded({
     extended: true
 });
+app.use(express.json())
 app.use(bodyParser.json());
 app.use(morgan('dev'))
 

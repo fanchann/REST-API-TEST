@@ -1,6 +1,6 @@
 var connection = require('../connect');
 var mysql = require('mysql');
-var md5 = require('md5');
+var md5 = require('sha1');
 var response = require('../res');
 var jwt = require('jsonwebtoken');
 var config = require('../config/secret');
@@ -13,12 +13,13 @@ const registrasi = (req, res) => {
     var post = {
         username: req.body.username,
         email: req.body.email,
-        password: md5(req.body.password),
+        password: req.body.password,
         role: req.body.role,
-        tanggal_daftar: new Date()
-    }
+        tanggal_daftar: new Date(),
+    };
+    console.log(post)
 
-    var query = "SELECT email FROM ?? WHERE ??";
+    var query = "SELECT email FROM ?? WHERE ??=?";
     var table = ["user", "email", post.email];
 
     query = mysql.format(query, table);
@@ -29,7 +30,7 @@ const registrasi = (req, res) => {
             console.log(err)
         } else {
             if (rows.length == 0) {
-                var query = `INSERT INTO ?? SET ?`;
+                var query = "INSERT INTO ?? SET ?";
                 var table = ["user"];
 
                 query = mysql.format(query, table);
