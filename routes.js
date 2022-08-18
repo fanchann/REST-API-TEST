@@ -13,4 +13,6 @@ module.exports = (app) => {
 
     app.route('/views/:id')
         .get(message.tampilDataById)
+    app.route('/edit')
+        .put(message.editMhsById)
 }
