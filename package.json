@@ -18,6 +18,9 @@
     "homepage": "https://github.com/fanchann/REST-API-TEST#readme",
     "dependencies": {
         "body-parser": "^1.20.0",
+        "ip": "^1.1.8",
+        "jsonwebtoken": "^8.5.1",
+        "morgan": "^1.10.0",
         "mysql": "^2.18.1",
         "nodemon": "^2.0.19"
     }
