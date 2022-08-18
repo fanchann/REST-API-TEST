@@ -9,4 +9,7 @@ module.exports = (app) => {
 
     app.route('/views')
         .get(message.tampilData)
+
+    app.route('/views/:id')
+        .get(message.tampilDataById)
 }

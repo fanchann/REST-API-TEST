@@ -4,12 +4,13 @@
 const response = require('./res');
 const connection = require('./connect');
 
-exports.index = (req, res) => {
+
+const index = (req, res) => {
     response.ok('REST API running', res);
 }
 
 //views all mahasiswa
-exports.tampilData = (req, res) => {
+const tampilData = (req, res) => {
     connection.query(`SELECT * FROM mahasiswa`, (err, views, fields) => {
         if (err) {
             connection.log(err)
@@ -17,4 +18,22 @@ exports.tampilData = (req, res) => {
             response.ok(views, res)
         }
     })
+}
+
+const tampilDataById = (req, res) => {
+    let id = req.params.id;
+    connection.query(`SELECT * FROM mahasiswa WHERE id_mahasiswa = ?`, id, (err, views, fields) => {
+        if (err) {
+            console.log(err)
+        } else {
+            response.ok(views, res)
+        }
+    })
+}
+
+
+module.exports = {
+    index,
+    tampilData,
+    tampilDataById
 }
