@@ -19,4 +19,7 @@ module.exports = (app) => {
 
     app.route('/hapus/:id_mahasiswa')
         .delete(message.hapusMahasiswa)
+
+    app.route('/grouping')
+        .get(message.tampilAll)
 }

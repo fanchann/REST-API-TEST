@@ -88,11 +88,27 @@ const hapusMahasiswa = function(req, res) {
         });
 }
 
+
+//views group
+
+const tampilAll = (req, res) => {
+    const join = `SELECT mahasiswa.id_mahasiswa,mahasiswa.nim,mahasiswa.nama,mahasiswa.jurusan,matakuliah.matakuliah,matakuliah.sks FROM krs JOIN matakuliah JOIN mahasiswa WHERE krs.id_matakuliah = matakuliah.id_matkul AND krs.id_mahasiswa = mahasiswa.id_mahasiswa ORDER BY mahasiswa.id_mahasiswa;`
+    connection.query(join, (err, rows, fields) => {
+        if (err) {
+            console.log(err)
+        } else {
+            response.oknested(rows, res)
+        }
+    })
+}
+
+
 module.exports = {
     index,
     tampilData,
     tampilDataById,
     tambahData,
     editMhsById,
-    hapusMahasiswa
+    hapusMahasiswa,
+    tampilAll
 }
