@@ -13,6 +13,10 @@ module.exports = (app) => {
 
     app.route('/views/:id')
         .get(message.tampilDataById)
+
     app.route('/edit')
         .put(message.editMhsById)
+
+    app.route('/hapus')
+        .delete(message.hapusMahasiswa)
 }
