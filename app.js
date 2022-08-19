@@ -8,12 +8,11 @@ const port = 3001
 
 
 //parse application/json
-bodyParser.urlencoded({
+app.use(bodyParser.urlencoded({
     extended: true
-});
-app.use(express.json())
+}));
 app.use(bodyParser.json());
-app.use(morgan('dev'))
+app.use(morgan('dev'));
 
 
 //Panggil routes
