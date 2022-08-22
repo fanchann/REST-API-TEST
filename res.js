@@ -1,9 +1,4 @@
 'use strict';
-
-const {
-    response
-} = require("express");
-
 exports.ok = (values, response) => {
     var data = {
         'status': 200,
@@ -11,7 +6,7 @@ exports.ok = (values, response) => {
     };
 
     response.json(data);
-    response.end()
+    response.end();
 }
 
 //res for nested matkul
